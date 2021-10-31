@@ -62,4 +62,4 @@ stages:
           deployToSlotOrASE: true
           ResourceGroupName: 'VisualStudioOnline-6670AFB8FBB8454BB7E5B4682F12D394'
           SlotName: 'production'
-          packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+          packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
