@@ -53,13 +53,6 @@ stages:
           downloadType: 'single'
           artifactName: 'drop'
           downloadPath: '$(System.ArtifactsDirectory)'
-      - task: AzureWebApp@1
-        inputs:
-          azureSubscription: 'Pay-As-You-Go(bf6b53dd-df2b-49be-88a1-a6675c86ed75)'
-          appType: 'webApp'
-          appName: 'arm2app'
-          package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-          deploymentMethod: 'auto'
       - task: AzureRmWebAppDeployment@4
         inputs:
           ConnectionType: 'AzureRM'
