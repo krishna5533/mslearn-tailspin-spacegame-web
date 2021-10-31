@@ -31,6 +31,7 @@ stages:
           msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
           platform: '$(buildPlatform)'
           configuration: '$(buildConfiguration)'
+      
 
       - task: VSTest@2
         inputs:
@@ -63,3 +64,10 @@ stages:
           ResourceGroupName: 'VisualStudioOnline-6670AFB8FBB8454BB7E5B4682F12D394'
           SlotName: 'production'
           packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
+      - task: AzureRmWebAppDeployment@4
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'Pay-As-You-Go(1)(bf6b53dd-df2b-49be-88a1-a6675c86ed75)'
+          appType: 'webApp'
+          WebAppName: 'arm2app'
+          packageForLinux: '$(System.ArtifactDirectory)/drop/*.zip'
