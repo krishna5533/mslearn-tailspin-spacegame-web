@@ -6,7 +6,7 @@
 trigger:
 - main
 stages:
- - stage: build stage
+ - stage: buildstage
    displayName: build stage
    jobs:
    - job: buildjob
@@ -42,7 +42,7 @@ stages:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
           ArtifactName: 'drop'
           publishLocation: 'Container'
- - stage: deploy stage
+ - stage: deploystage
    displayName: deploy stage
    jobs:
    - job: deployjob
